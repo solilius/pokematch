@@ -1,0 +1,17 @@
+{
+  "name": "@pokematch/root",
+  "author": "Sol Elan",
+  "private": true,
+  "scripts": {
+    "start": "lerna run start",
+    "build": "lerna run build",
+    "bootstrap": "lerna bootstrap"
+  },
+
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
