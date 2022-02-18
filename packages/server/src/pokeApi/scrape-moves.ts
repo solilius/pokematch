@@ -14,12 +14,23 @@ interface ResponseMove {
   target: { name: string };
   type: { name: Type };
   damage_class: { name: DamageClass };
-  effect_entries: {
+  flavor_text_entries: {
+    flavor_text: string;
+    language: {
+      name: string
+    }
+  }[],
+  effect_entries?: {
     short_effect: string,
     language: {
       name: string
     }
   }[],
+}
+
+const getEffect = ({ effect_entries, flavor_text_entries }: ResponseMove): string => {
+  return effect_entries?.find(e => e.language.name === 'en')?.short_effect ||
+    flavor_text_entries?.find(e => e.language.name === 'en')?.flavor_text;
 }
 
 const formatMove = (response: ResponseMove): MoveDetails => {
@@ -32,14 +43,14 @@ const formatMove = (response: ResponseMove): MoveDetails => {
     damageClass: response.damage_class.name,
     type: response.type.name,
     pp: response.pp,
-    effect: response.effect_entries.find(e => e.language.name === 'en').short_effect,
+    effect: getEffect(response),
     effectChance: response.effect_chance,
   }
 }
 
 const getAllMoveNames = async (): Promise<string[]> => {
   const { data } = await axios.get(`${envs.pokemonApi}/move?limit=1000`);
-  return data.map((m: { name: string }) => m.name);
+  return data.results.map((m: { name: string }) => m.name);
 }
 
 const getMove = async (name: string): Promise<ResponseMove> => {
@@ -48,12 +59,13 @@ const getMove = async (name: string): Promise<ResponseMove> => {
 
 export const scrapeAllMoves = async () => {
   const moveNames = await getAllMoveNames();
-  for (let [index, moveName] of moveNames) {
+
+  for (let moveName of moveNames) {
     try {
       const move = await getMove(moveName);
       const formatedMove = formatMove(move);
       await Move.create(formatedMove);
-      console.log(`${index} :: ${moveName}`);
+      console.log(`${moveName}`);
     } catch (error) {
       console.error(error);
     }

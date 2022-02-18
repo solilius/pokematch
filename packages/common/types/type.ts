@@ -12,7 +12,7 @@ export enum Type {
   Water = 'water',
   Grass = 'grass',
   Electric = 'electric',
-  Psychic = 'Psychic',
+  Psychic = 'psychic',
   Ice = 'ice',
   Dragon = 'dragon',
   Dark = 'dark',

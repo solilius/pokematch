@@ -1,15 +1,14 @@
-import { scrapeAllMoves } from "../pokeApi/scrape-moves";
 import { connectToDatabase } from "../db/connect";
+import { getTypeChart } from "../pokeApi/scrapetypes";
 import envs from "./envs";
 
 export const startServer = async () => {
   try {
     await connectToDatabase(envs.mongoURI);
-    console.log('connected to database successfully');
 
-    // remove after scrap
+    console.log('connected to database successfully');
     try {
-      await scrapeAllMoves();
+      await getTypeChart();
       console.log('done');
     } catch (error) {
       console.log(error);

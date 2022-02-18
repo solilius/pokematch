@@ -1,4 +1,4 @@
-import { Type, DamageClass } from "../types";
+import { Type, DamageClass, VersionGroup } from "../types";
 
 export interface MoveDetails {
   name: string;
@@ -14,13 +14,13 @@ export interface MoveDetails {
 }
 
 export interface VersionDetails {
- versionGroup: VersionGroup;
- level: number;
- moveLearnMethod: 'machine' | 'level-up' | 'tutor' | 'egg';
+  versionGroup: VersionGroup;
+  level: number;
+  moveLearnMethod: string;
 }
 
 export interface Move {
-  id: number;
-  details: MoveDetails;
+  name: string;
+  details?: MoveDetails;
   versionDetails: VersionDetails[];
 }

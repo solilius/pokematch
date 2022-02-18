@@ -1,4 +1,4 @@
-export const enum VersionGroup {
+export enum VersionGroup {
   RedBlue = 'red-blue',
   Yellow = 'yellow',
   GoldSilver = 'gold-silver',
@@ -10,10 +10,13 @@ export const enum VersionGroup {
   Platinum = 'platinum',
   HeartGoldSoulSilver = 'heartgold-soulsilver',
   BlackWhite = 'black-white',
+  Colosseum = 'colosseum',
+  XD = 'xd',
   Black2White2 = 'black-2-white-2',
   XY = 'x-y',
   OmegaRubyAlphaSapphire = 'omega-ruby-alpha-sapphire',
   SunMoon = 'sun-moon',
   UltraSunUltraMoon = 'ultra-sun-ultra-moon',
+  LetsGo = 'lets-go-pikachu-lets-go-eevee',
   SwordShield = 'sword-shield',
 }

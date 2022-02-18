@@ -4,6 +4,10 @@ import envs from '../utils/envs';
 
 interface ResponseAblity {
   name: string;
+  flavor_text_entries: {
+    language: { name: string };
+    flavor_text: string;
+  }[];
   effect_entries: {
     short_effect: string;
     language: { name: string };
@@ -11,11 +15,12 @@ interface ResponseAblity {
 }
 
 const formatAbility = (response: ResponseAblity): Ability => {
-  const { short_effect } = response.effect_entries.find(a => a.language.name === 'en');
+  const effect =  response.effect_entries.find(a => a.language.name === 'en')?.short_effect || 
+  response.flavor_text_entries.find(a => a.language.name === 'en').flavor_text;
 
   return {
+    effect,
     name: response.name,
-    effect: short_effect
   }
 }
 

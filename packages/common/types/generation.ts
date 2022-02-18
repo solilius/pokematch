@@ -1,4 +1,4 @@
-export const enum Generation {
+export enum Generation {
   I = 'generation-i',
   II = 'generation-ii',
   III = 'generation-iii',
