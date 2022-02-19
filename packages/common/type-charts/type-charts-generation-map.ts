@@ -1,5 +1,5 @@
-import { typeChartGenI, typeChartGenII, typeChartGenVI } from ".";
-import { Generation } from "..";
+import { typeChartGenI, typeChartGenII, typeChartGenVI } from "./";
+import { Generation } from "../types";
 
 export const typeChartGenerationMap = {
   [Generation.I]: typeChartGenI,

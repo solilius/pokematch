@@ -1,3 +1,4 @@
+/** generation -> versionGroup -> version */
 export const enum Version {
   Red = 'red',
   Blue = 'blue',

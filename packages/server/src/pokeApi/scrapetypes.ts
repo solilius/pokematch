@@ -5,7 +5,7 @@ import {
   Type,
   TypeEffectiveness,
   TypeRelations,
-  TypeRelationsMap
+  TypesRelations
 } from '@pokematch/common';
 
 import envs from '../utils/envs';
@@ -53,8 +53,8 @@ const formatDamageRelations = (
   return relations;
 }
 
-const getRelations = async (relationSide: RelationSide): Promise<TypeRelationsMap> => {
-  const relations: TypeRelationsMap = {};
+const getRelations = async (relationSide: RelationSide): Promise<TypesRelations> => {
+  const relations: TypesRelations = {};
 
   for (const typeName of Object.values(Type)) {
     const { data } = await axios.get(`${envs.pokemonApi}/type/${typeName}`);

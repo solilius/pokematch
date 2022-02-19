@@ -1,3 +1,4 @@
+/** generation -> versionGroup -> version */
 export enum VersionGroup {
   RedBlue = 'red-blue',
   Yellow = 'yellow',

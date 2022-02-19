@@ -1,3 +1,4 @@
+/** generation -> versionGroup -> version */
 export enum Generation {
   I = 'generation-i',
   II = 'generation-ii',

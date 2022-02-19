@@ -1,3 +1,4 @@
+/** Pokemon types */
 export enum Type {
   Normal = 'normal',
   Fighting = 'fighting',

@@ -1,6 +1,6 @@
-import { Type } from ".";
+import { Type } from "./type";
 
-export type TypeRelationsMap =  {[key in Type]?: TypeRelations};
+export type TypesRelations =  {[key in Type]?: TypeRelations};
 
 export type TypeRelations =  {[key in Type]?: TypeEffectiveness};
 
