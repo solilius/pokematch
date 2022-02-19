@@ -1,4 +1,4 @@
-import { Types, Ability, Stats, Move } from "../";
+import { Types, Ability, Stats, Move } from "./";
 
 /** Pokemon's data */
 export interface Pokemon {
