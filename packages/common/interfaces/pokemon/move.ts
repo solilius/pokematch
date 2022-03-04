@@ -1,4 +1,4 @@
-import { Type, DamageClass, VersionGroup } from "../types";
+import { Type, DamageClass, VersionGroup } from "../../";
 
 /** Move's information */
 export interface MoveDetails {

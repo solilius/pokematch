@@ -4,4 +4,4 @@ export * from './stats';
 export * from './move';
 export * from './types';
 export * from './typeChart';
-export * from './trainer-pokemon';
+export * from './trained-pokemon';

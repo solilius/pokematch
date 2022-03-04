@@ -7,7 +7,7 @@ import {
   Types,
   Generation,
   VersionGroup,
-  Type
+  Type,
 } from '@pokematch/common';
 
 const statsSchema = new Schema<Stats>({
@@ -31,19 +31,20 @@ const moveSchema = new Schema<Move>({
 const abilitySchema = new Schema<Ability>({
   name: { type: String, required: true },
   effect: { type: String, required: true },
+  isHidden: { type: Boolean, required: true },
 });
 
 const typesSchema = new Schema<Types>({
-  slot1: { type: String, enum: Type, required: true },
-  slot2: { type: String, enum: Type },
+  slot_1: { type: String, enum: Type, required: true },
+  slot_2: { type: String, enum: Type },
   pastTypes: [{
     generation: { type: String, enum: Generation },
-    slot1: { type: String, enum: Type },
-    slot2: { type: String, enum: Type }
+    slot_1: { type: String, enum: Type },
+    slot_2: { type: String, enum: Type }
   }]
 });
 
-const schema = new Schema<PokemonInterface>({
+export const schema = new Schema<PokemonInterface>({
   name: { type: String, required: true },
   id: { type: Number, required: true },
   species: { type: String, required: true },

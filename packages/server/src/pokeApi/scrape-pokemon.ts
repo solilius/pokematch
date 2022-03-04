@@ -70,7 +70,7 @@ const formatMoves = ({ moves }: ResponsePokemon): Move[] => {
   return moves.map(m => ({
     name: m.move.name,
     versionDetails: m.version_group_details
-      .filter(m => !Object.values(notIncludedVersion).includes(m.version_group.name))
+      .filter(m => !notIncludedVersion.includes(m.version_group.name))
       .map(v => ({
         level: v.level_learned_at,
         moveLearnMethod: v.move_learn_method.name,
@@ -90,22 +90,24 @@ const processAbility = async ({ ability, is_hidden }: AbilityResponse): Promise<
 }
 
 const getAbilities = async ({ abilities }: ResponsePokemon): Promise<Ability[]> => {
-  const formatedabilities: Ability[] = await Promise.all(abilities.map(processAbility));
+  // get the abilitie data and format with the res value from our pokemon
+  const formatedabilities: Ability[] =
+    await Promise.all(abilities.map(processAbility));
 
   return formatedabilities;
 }
 
 const formatTypes = ({ types, past_types }: ResponsePokemon): Types => {
   const formatedTypes: Types = {
-    slot1: types[0].type.name,
-    slot2: types[1]?.type.name,
+    slot_1: types[0].type.name,
+    slot_2: types[1]?.type.name,
   }
 
-  if (past_types?.length === 0) {
+  if (past_types?.length > 0) {
     formatedTypes.pastTypes = past_types.map(m => ({
       generation: m.generation.name,
-      slot1: m.types[0].type.name,
-      slot2: m.types[1]?.type.name,
+      slot_1: m.types[0].type.name,
+      slot_2: m.types[1]?.type.name,
     }))
   }
 
@@ -137,7 +139,7 @@ const getPokemon = async (name: string): Promise<ResponsePokemon> => {
 export const scrapeAllPokemons = async () => {
   const pokemonNames = await getAllPokemonNames();
 
-  for (let  pokemonName of pokemonNames) {
+  for (let pokemonName of pokemonNames) {
     try {
       const pokemon = await getPokemon(pokemonName);
       const formatedPokemom = await formatPokemon(pokemon);

@@ -15,6 +15,7 @@ interface ResponseAblity {
 }
 
 const formatAbility = (response: ResponseAblity): Ability => {
+  // sometimes the effect_entries is undefined so we use the flavor_text instead
   const effect =  response.effect_entries.find(a => a.language.name === 'en')?.short_effect || 
   response.flavor_text_entries.find(a => a.language.name === 'en').flavor_text;
 

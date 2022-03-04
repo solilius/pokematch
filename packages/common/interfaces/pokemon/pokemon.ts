@@ -14,6 +14,6 @@ export interface Pokemon {
   moves: Move[];
   /** List of abilities the pokemon can have */
   abilities: Ability[];
-  /** Types and past types of the pokemon and type chart*/
+  /** Types and past types of the pokemon and type chart */
   types: Types;
 }

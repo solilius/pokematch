@@ -2,8 +2,14 @@ import React from "react";
 import "./index.css";
 import ReactDOM from "react-dom";
 import reportWebVitals from "./reportWebVitals";
+import { PokemonsContextProvider } from "./contexts/pokemonsContext";
+import { App } from "./components/App";
+
 ReactDOM.render(
   <React.StrictMode>
+    <PokemonsContextProvider>
+      <App/>
+    </PokemonsContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

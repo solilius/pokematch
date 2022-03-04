@@ -1,5 +1,5 @@
 /** generation -> versionGroup -> version */
-export const enum Version {
+export enum Version {
   Red = 'red',
   Blue = 'blue',
   Yellow = 'yellow',

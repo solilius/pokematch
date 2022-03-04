@@ -40,10 +40,13 @@ const formatDamageRelations = (
   }: ResponseType['damage_relations'],
   relationSide: RelationSide,
 ): TypeRelations => {
+  // we see what fields to iterate (attack/ defense) with the relationSide param
   const relationFields = {
     [RelationSide.Attack as number]: [double_damage_to, half_damage_to, no_damage_to],
     [RelationSide.Defense as number]: [double_damage_from, half_damage_from, no_damage_from],
   }
+
+  
   const relations = InitiateTypeEffectivenessMap();
 
   relationFields[relationSide][0].forEach(type => relations[type.name] = TypeEffectiveness.SuperEffective);
@@ -53,11 +56,12 @@ const formatDamageRelations = (
   return relations;
 }
 
-const getRelations = async (relationSide: RelationSide): Promise<TypesRelations> => {
+const getTypesRelations = async (relationSide: RelationSide): Promise<TypesRelations> => {
   const relations: TypesRelations = {};
 
   for (const typeName of Object.values(Type)) {
     const { data } = await axios.get(`${envs.pokemonApi}/type/${typeName}`);
+    // get the type relations of each type for each type
     relations[typeName] = formatDamageRelations(data.damage_relations, relationSide);
   }
 
@@ -67,8 +71,8 @@ const getRelations = async (relationSide: RelationSide): Promise<TypesRelations>
 export const getTypeChart = async () => {
   try {
     const generationTypeChart: TypeChartInterface = {
-      attacking: await getRelations(RelationSide.Attack),
-      defending: await getRelations(RelationSide.Defense),
+      attacking: await getTypesRelations(RelationSide.Attack),
+      defending: await getTypesRelations(RelationSide.Defense),
     };
 
     console.log(generationTypeChart);

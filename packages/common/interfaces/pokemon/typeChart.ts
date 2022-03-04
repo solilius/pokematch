@@ -1,4 +1,4 @@
-import { TypesRelations } from "../types";
+import { TypesRelations } from "../../types";
 
 /** Pokemon types resistence map */
  export type TypeChart = {

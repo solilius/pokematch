@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { DamageClass, MoveDetails, Type } from '@pokematch/common';
 
-const schema = new Schema<MoveDetails>({
+export const schema = new Schema<MoveDetails>({
   name: { type: String, required: true },
   priority: { type: Number, required: true },
   target: { type: String, required: true },
