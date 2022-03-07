@@ -3,7 +3,6 @@ import { Generation, Pokemon, Trainer, TypeChart } from "@pokematch/common";
 
 interface ContextData {
   generation: Generation;
-  pokemonsList: Partial<Pokemon>[];
   trainer: Trainer;
   pokemonTeam: Pokemon[];
   enemyPokemon?: Pokemon;
@@ -24,14 +23,9 @@ export const PokemonsContextProvider = ({
 }) => {
   const [trainer, setTrainer] = useState<Trainer>({} as Trainer);
   const [typeChart, setTypeChart] = useState<TypeChart>({} as TypeChart);
-  const [pokemonsList, setPokemonsList] = useState<Partial<Pokemon>[]>([]);
   const [pokemonTeam, setPokemonTeam] = useState<Pokemon[]>([]);
   const [enemyPokemon, setEnemyPokemon] = useState<Pokemon>();
   const [generation, setGeneration] = useState(Generation.V);
-
-  useEffect(() => {
-    // request pokemons
-  }, []);
 
   useEffect(() => {
     // get team pokemons
@@ -40,10 +34,9 @@ export const PokemonsContextProvider = ({
   useEffect(() => {
     // calc the types and charts again
   }, [generation]);
-
+  
   const value: ContextData = {
     generation,
-    pokemonsList,
     trainer,
     pokemonTeam,
     enemyPokemon,
