@@ -1,11 +1,10 @@
 import styled from "styled-components";
-import { Button } from 'fomantic-ui-react';
-
-const CornerButton = styled(Button)`
+const CornerButton = styled.button`
   position: fixed;
   top: 12px;
   right: 12px;
 `;
+
 export const LoginButton = () => {
   const onClicked = () => {};
 

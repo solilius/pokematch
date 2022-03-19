@@ -2,6 +2,7 @@ import { Link as ReactLink} from "react-router-dom";
 import styled from "styled-components";
 
 import{ ReactComponent as Pokeball } from '../../resources/pokeball.svg';
+import { GenerationSelect } from './GenerationSelect';
 
 const Navbar = styled.nav`
   position: fixed;
@@ -27,12 +28,12 @@ const Link = styled(ReactLink)`
 `
 
 export const PokeNav = () => {
-
   return (
     <Navbar>
       <Link to="/"> <Pokeball width="25px" fill="white"/> </Link>
       <Link to="/battle"> Battle </Link>
       <Link to="/team-builderr"> Team Builder </Link>
+      <GenerationSelect />
     </Navbar>
   );
 };
