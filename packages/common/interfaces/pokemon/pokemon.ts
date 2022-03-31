@@ -11,7 +11,7 @@ export interface Pokemon {
   /** Pokemon stats */
   stats: Stats;
   /** List of moves the pokemon can learn */
-  moves: Move[];
+  moves?: Move[];
   /** List of abilities the pokemon can have */
   abilities: Ability[];
   /** Types and past types of the pokemon and type chart */

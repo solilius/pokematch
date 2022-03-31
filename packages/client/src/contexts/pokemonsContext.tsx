@@ -25,7 +25,7 @@ export const PokemonsContextProvider = ({
   const [typeChart, setTypeChart] = useState<TypeChart>({} as TypeChart);
   const [pokemonTeam, setPokemonTeam] = useState<Pokemon[]>([]);
   const [enemyPokemon, setEnemyPokemon] = useState<Pokemon>();
-  const [generation, setGeneration] = useState(Generation.V);
+  const [generation, setGeneration] = useState(Generation.VIII);
 
   useEffect(() => {
     // get team pokemons

@@ -1,5 +1,3 @@
-import { VersionGroup } from "./"
-
 /** generation -> versionGroup -> version */
 export enum Generation {
   I = 'generation-i',

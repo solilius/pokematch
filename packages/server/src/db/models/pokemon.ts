@@ -49,9 +49,9 @@ export const schema = new Schema<PokemonInterface>({
   id: { type: Number, required: true },
   species: { type: String, required: true },
   stats: { type: statsSchema, required: true },
-  moves: { type: [moveSchema], required: true },
   abilities: { type: [abilitySchema], required: true },
   types: { type: typesSchema, required: true },
+  moves: { type: [moveSchema] },
 });
 
 export const Pokemon = model('Pokemon', schema);

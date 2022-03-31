@@ -8,7 +8,7 @@ export const getAllPokemons = async (
 ) => {
   try {
     const pokemons = await Pokemon.find({}, { name: 1, id: 1, _id: 0 });
-    res.json(pokemons);
+    res.json(pokemons.filter(p => p.id < 10000));
   } catch (error) {
     console.error(error);
 

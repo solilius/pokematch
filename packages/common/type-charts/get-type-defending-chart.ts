@@ -19,9 +19,9 @@ export const calculateTypeResistenceMap = ({ typeA, typeB, generation }: Options
   const chartTypeB = chart.defending[typeB];
   const res: any = {};
 
-  for (let type of Object.values(Type)) {
+  for (let type of Object.keys(chartTypeA)) {
     // calculate the effectives of a type against the 2 types of the pokemon
-    const combinedResistence = chartTypeA[type] + chartTypeB[type];
+    const combinedResistence = chartTypeA[type as Type] + chartTypeB[type as Type];
 
     // if the result is lower than TypeEffectiveness.DoubleNotEffective value
     // then it means one of your types is immune to the attacking type
